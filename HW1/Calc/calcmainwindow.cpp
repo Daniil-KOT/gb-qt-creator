@@ -8,7 +8,6 @@ CalcMainWindow::CalcMainWindow(QWidget *parent)
     , ui(new Ui::CalcMainWindow)
 {
     ui->setupUi(this);
-    isDegrees_ = true;
 }
 
 CalcMainWindow::~CalcMainWindow()
@@ -101,10 +100,15 @@ void CalcMainWindow::on_calculate_angle_clicked()
 
     if (!ui->angle_val->text().isEmpty())
     {
-        if (isDegrees_)
+        if (ui->degrees->isChecked())
             angle = ui->angle_val->text().toInt();
-        else
+        else if (ui->radians->isChecked())
             angle = qRadiansToDegrees(ui->angle_val->text().toDouble());
+        else
+        {
+            QMessageBox::information(this, "Warning", "Choose if angle is in degrees or in radians!");
+            return;
+        }
     }
     else
     {
@@ -116,15 +120,3 @@ void CalcMainWindow::on_calculate_angle_clicked()
 
     QMessageBox::information(this, "Result", "Side = " + QString::number(res));
 }
-
-void CalcMainWindow::on_degrees_toggled(bool checked)
-{
-    isDegrees_ = true;
-}
-
-
-void CalcMainWindow::on_radians_toggled(bool checked)
-{
-    isDegrees_ = false;
-}
-
