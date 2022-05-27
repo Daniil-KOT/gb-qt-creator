@@ -12,12 +12,12 @@ LangsTable::LangsTable(QWidget *parent)
 {
     ui->setupUi(this);
 
-    model_->appendRow(new QStandardItem(icons_["C++"], "C++"));
-    model_->appendRow(new QStandardItem(icons_["C#"], "C#"));
-    model_->appendRow(new QStandardItem(icons_["Java"], "Java"));
-    model_->appendRow(new QStandardItem(icons_["JavaScript"], "JavaScript"));
-    model_->appendRow(new QStandardItem(icons_["PHP"], "PHP"));
-    model_->appendRow(new QStandardItem(icons_["Python"], "Python"));
+    model_->appendRow(new QStandardItem(icons_["c++"], "C++"));
+    model_->appendRow(new QStandardItem(icons_["c#"], "C#"));
+    model_->appendRow(new QStandardItem(icons_["java"], "Java"));
+    model_->appendRow(new QStandardItem(icons_["javascript"], "JavaScript"));
+    model_->appendRow(new QStandardItem(icons_["php"], "PHP"));
+    model_->appendRow(new QStandardItem(icons_["python"], "Python"));
 
     connect(tree_, &FilesystemTree::fileChosen, this, &LangsTable::setIconFilePath);
     connect(model_, &QStandardItemModel::itemChanged, this, &LangsTable::changeIcon);
@@ -32,9 +32,13 @@ LangsTable::~LangsTable()
 void LangsTable::on_checkBox_stateChanged(int arg1)
 {
     if (Qt::CheckState::Checked == arg1)
+    {
         ui->listView->setViewMode(QListView::IconMode);
+    }
     else
+    {
         ui->listView->setViewMode(QListView::ListMode);
+    }
 }
 
 void LangsTable::on_del_btn_clicked()
@@ -49,7 +53,9 @@ void LangsTable::on_add_btn_clicked()
 {
     QString name;
     if (!ui->langName->text().isEmpty())
+    {
         name = ui->langName->text();
+    }
     else
     {
         QMessageBox::information(this, "Warning", "Language name cannot be empty!");
@@ -57,11 +63,17 @@ void LangsTable::on_add_btn_clicked()
     }
 
     if (ui->pathToIcon->text().isEmpty())
-        model_->appendRow(new QStandardItem(icons_["Default"], name));
+    {
+        model_->appendRow(new QStandardItem(icons_["default"], name));
+    }
     else
+    {
         model_->appendRow(new QStandardItem(QIcon(ui->pathToIcon->text()), name));
+    }
 }
 
+// it could have been done using QFileDialog
+// but I wanted to try treeview and separate widget
 void LangsTable::on_toolButton_clicked()
 {
     tree_->setModal(true);
@@ -83,18 +95,30 @@ void LangsTable::setIconFilePath(QString &path)
  */
 void LangsTable::on_up_btn_clicked()
 {
-    if (ui->listView->currentIndex().row() <= 0)
+    int row = ui->listView->currentIndex().row();
+
+    if (0 >= row)
+    {
+        QMessageBox::information(this, "Warning", "Choose item to move!");
         return;
-    auto tmp = model_->takeRow(ui->listView->currentIndex().row());
-    model_->insertRow(ui->listView->currentIndex().row() - 1, tmp);
+    }
+
+    QList<QStandardItem*> tmp = model_->takeRow(row);
+    model_->insertRow(row - 1, tmp);
 }
 
 void LangsTable::on_down_btn_clicked()
 {
-    if (ui->listView->currentIndex().row() == model_->rowCount() - 1)
+    int row = ui->listView->currentIndex().row();
+
+    if (model_->rowCount() - 1 == row)
+    {
+        QMessageBox::information(this, "Warning", "Choose item to move!");
         return;
-    auto tmp = model_->takeRow(ui->listView->currentIndex().row());
-    model_->insertRow(ui->listView->currentIndex().row() + 1, tmp);
+    }
+
+    QList<QStandardItem*> tmp = model_->takeRow(row);
+    model_->insertRow(row + 1, tmp);
 }
 
 /*
@@ -114,10 +138,14 @@ void LangsTable::changeIcon(QStandardItem *item)
     {
         isNameChanged_ = false;
 
-        if (icons_.contains(item->text()))
-            item->setIcon(icons_[item->text()]);
+        if (icons_.contains(item->text().toLower()))
+        {
+            item->setIcon(icons_[item->text().toLower()]);
+        }
         else
-            item->setIcon(icons_["Default"]);
+        {
+            item->setIcon(icons_["default"]);
+        }
     }
 }
 

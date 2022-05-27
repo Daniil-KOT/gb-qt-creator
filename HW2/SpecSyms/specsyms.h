@@ -9,9 +9,7 @@ class SpecSyms
 public:
     SpecSyms();
 
-    bool changed(QString& text);
-
-    QString replaceSym(QString& text);
+    bool changed(QString text);
 
     QString getText();
 

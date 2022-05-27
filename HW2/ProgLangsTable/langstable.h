@@ -44,13 +44,13 @@ private:
     QStandardItemModel* model_;
     const QMap <QString, QIcon> icons_ =
     {
-        {"C++",         QIcon("E:/code/GB/gb-qt-creator/HW2/ProgLangsTable/Resource/c++.png")},
-        {"C#",          QIcon("E:/code/GB/gb-qt-creator/HW2/ProgLangsTable/Resource/c-sharp.png")},
-        {"Java",        QIcon("E:/code/GB/gb-qt-creator/HW2/ProgLangsTable/Resource/java.png")},
-        {"JavaScript",  QIcon("E:/code/GB/gb-qt-creator/HW2/ProgLangsTable/Resource/js.png")},
-        {"PHP",         QIcon("E:/code/GB/gb-qt-creator/HW2/ProgLangsTable/Resource/php.png")},
-        {"Python",      QIcon("E:/code/GB/gb-qt-creator/HW2/ProgLangsTable/Resource/python.png")},
-        {"Default",     QIcon("E:/code/GB/gb-qt-creator/HW2/ProgLangsTable/Resource/default.png")}
+        {"c++",         QIcon(":/Resources/c++.png")},
+        {"c#",          QIcon(":/Resources/c-sharp.png")},
+        {"java",        QIcon(":/Resources/java.png")},
+        {"javascript",  QIcon(":/Resources/js.png")},
+        {"php",         QIcon(":/Resources/php.png")},
+        {"python",      QIcon(":/Resources/python.png")},
+        {"default",     QIcon(":/Resources/default.png")}
     };
     FilesystemTree* tree_;
     bool isNameChanged_;

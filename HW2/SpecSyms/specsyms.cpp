@@ -1,6 +1,7 @@
 #include "specsyms.h"
 
 #include <QMessageBox>
+#include <QDebug>
 
 SpecSyms::SpecSyms()
 {
@@ -9,11 +10,10 @@ SpecSyms::SpecSyms()
     lastText_ = "";
 }
 
-bool SpecSyms::changed(QString& text)
+bool SpecSyms::changed(QString text)
 {
-    modifiedText_ = text;
-
     quint32 length = qMin(qMin(text.length(), lastText_.length()), startPos_);
+    modifiedText_ = "";
 
     for (quint32 i = 0; i < length; ++i)
     {
@@ -25,34 +25,42 @@ bool SpecSyms::changed(QString& text)
     }
 
     bool changed = false;
+    qint32 lp = -1;
 
-    while (true)
+    const QChar* tmpText = text.constData();
+
+    for (qint32 fnd = text.indexOf("#@", startPos_);
+         fnd != -1 && startPos_ != lp;
+         fnd = text.indexOf("#@", startPos_))
     {
-        qint32 fnd = modifiedText_.indexOf("#@", startPos_);
+        modifiedText_.insert(modifiedText_.length(), &tmpText[0], fnd);
 
-        if (fnd == -1)
-            break;
+        lp = startPos_;
+        startPos_ = fnd;
 
-        modifiedText_.remove(fnd, 2);
+        qint32 endPos = text.indexOf('@', fnd + 2);
 
-        qint32 endPos_ = modifiedText_.indexOf("@", fnd);
-
-        if (endPos_ == -1)
-            break;
-
-        if (modifiedText_[endPos_ - 1] == '#')
-            continue;
-
-        qint16 charNum = endPos_ - fnd;
-
-        modifiedText_.remove(endPos_, 1);
-
-        if (specSyms_.contains(modifiedText_.mid(fnd, charNum)))
+        if (-1 == endPos)
         {
-           QString sym = specSyms_[modifiedText_.mid(fnd, charNum)];
+            break;
+        }
+        else if ('#' == text[endPos - 1])
+        {
+            modifiedText_.insert(modifiedText_.length(), &tmpText[fnd], fnd + 2);
+            startPos_ += 2;
+            continue;
+        }
+
+        qint16 charNum = endPos - (fnd + 2);
+
+        if (specSyms_.contains(text.mid(fnd + 2, charNum)))
+        {
+           QString sym = specSyms_[text.mid(fnd + 2, charNum)];
+
+           modifiedText_.insert(modifiedText_.length(), &tmpText[fnd + 2], charNum - 1);
            modifiedText_.remove(fnd + 1, charNum - 1);
            modifiedText_.replace(fnd, 1, sym);
-           startPos_ = fnd;
+           startPos_ = endPos + 1;
            changed = true;
         }
     }
