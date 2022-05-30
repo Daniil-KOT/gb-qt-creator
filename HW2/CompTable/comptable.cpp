@@ -109,8 +109,19 @@ void CompTable::on_add_btn_clicked()
     setInfo(name, ip, mac);
 }
 
+void CompTable::on_add_empty_btn_clicked()
+{
+    QList<QStandardItem*> columnsInfo;
 
-void CompTable::on_pushButton_clicked()
+    columnsInfo.append(new QStandardItem(""));
+    columnsInfo.append(new QStandardItem(""));
+    columnsInfo.append(new QStandardItem(""));
+    columnsInfo.append(new QStandardItem(""));
+
+    model_->appendRow(columnsInfo);
+}
+
+void CompTable::on_paint_btn_clicked()
 {
     QItemSelectionModel* selection = ui->tableView->selectionModel();
     QModelIndexList indexes = selection->selectedIndexes();
@@ -118,4 +129,3 @@ void CompTable::on_pushButton_clicked()
     for (QModelIndex idx : indexes)
         ui->tableView->setItemDelegateForRow(idx.row(), new CompTableDelegate());
 }
-

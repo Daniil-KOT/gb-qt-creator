@@ -116,7 +116,7 @@
      <string>Add</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="paint_btn">
     <property name="geometry">
      <rect>
       <x>840</x>
@@ -127,6 +127,19 @@
     </property>
     <property name="text">
      <string>Paint Line</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="add_empty_btn">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>560</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add Empty Line</string>
     </property>
    </widget>
   </widget>

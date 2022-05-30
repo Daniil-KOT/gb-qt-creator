@@ -20,7 +20,9 @@ public:
 private slots:
     void on_add_btn_clicked();
 
-    void on_pushButton_clicked();
+    void on_add_empty_btn_clicked();
+
+    void on_paint_btn_clicked();
 
 private:
     QString getMac() const;
