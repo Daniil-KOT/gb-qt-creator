@@ -1,0 +1,9 @@
+This is a simple text redactor.
+
+For now you can only edit plain text, open files and save edited.
+
+To open file you can go to File - Open and choose the file or you can press Ctrl + O.
+
+To save the file you can go to File - Save or press Ctrl + S. If it is not new file it will be simply saved, else you can choose a path.
+
+To save file as... you can go to File - Save as or press Ctrl + Shift + S.
