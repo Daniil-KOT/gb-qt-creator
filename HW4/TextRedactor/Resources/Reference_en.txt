@@ -1,0 +1,13 @@
+This is a simple text redactor.
+
+For now you can only edit plain text, open files and save edited.
+
+To open file you can go to File - Open and choose the file or you can press Ctrl + O.
+
+To save the file you can go to File - Save or press Ctrl + S. If it is not new file it will be simply saved, else you can choose a path.
+
+To save file as... you can go to File - Save as or press Ctrl + Shift + S.
+
+You can also change interface language. Go to Options - Switch language or simply press F2.
+
+All shortcuts can be changed. Go to Options - Change shortcuts or press F3. In the new window you can press any item in "Shortcuts" column then press a key sequence and press enter, then "Save" button.
