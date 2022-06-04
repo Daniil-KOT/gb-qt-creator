@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/icons/open.png</file>
+        <file>Resources/icons/save.png</file>
+        <file>Resources/icons/save_as.png</file>
+        <file>Resources/icons/info.png</file>
+        <file>Resources/icons/mainwindow.png</file>
+        <file>Textredactor_ru.qm</file>
+        <file>Textredactor_ru.ts</file>
+        <file>Resources/icons/switch_lang.png</file>
+        <file>Resources/icons/quit.png</file>
+        <file>Resources/Reference_en.txt</file>
+        <file>Resources/Reference_ru.txt</file>
+        <file>Resources/icons/chng_shortcuts.png</file>
+    </qresource>
+</RCC>
