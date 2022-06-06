@@ -19,6 +19,7 @@ TextRedactor::TextRedactor(QWidget *parent)
     this->setWindowTitle("Simple Text Redactor v0.1");
     this->setWindowIcon(QIcon(":/Resources/icons/mainwindow.png"));
 
+    QAction* actCreateNew = new QAction(QIcon(":/Resources/icons/new_file.png"), tr("&New file"), this);
     QAction* actOpen = new QAction(QIcon(":/Resources/icons/open.png"), tr("&Open"), this);
     QAction* actOpenReadOnly = new QAction(QIcon(":Resources/icons/open.png"), tr("&Open read only"), this);
     QAction* actSave = new QAction(QIcon(":/Resources/icons/save.png"), tr("&Save"), this);
@@ -28,6 +29,7 @@ TextRedactor::TextRedactor(QWidget *parent)
     QAction* actChangeShortcuts = new QAction(QIcon(":/Resources/icons/chng-shortcuts.png"), tr("&Change shortcuts"), this);
     QAction* actQuit = new QAction(QIcon(":/Resources/icons/quit.png"), tr("&Quit"), this);
 
+    actCreateNew->setShortcut(QKeySequence::New);
     actOpen->setShortcut(QKeySequence::Open);
     actOpenReadOnly->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_O);
     actSave->setShortcut(QKeySequence::Save);
@@ -48,6 +50,7 @@ TextRedactor::TextRedactor(QWidget *parent)
     actSwitchLang->setShortcut(Qt::Key_F2);
     actChangeShortcuts->setShortcut(Qt::Key_F3);
 
+    ui->menuFile->addAction(actCreateNew);
     ui->menuFile->addAction(actOpen);
     ui->menuFile->addAction(actOpenReadOnly);
     ui->menuFile->addAction(actSave);
@@ -68,6 +71,7 @@ TextRedactor::TextRedactor(QWidget *parent)
 
     setLanguage("en");
 
+    connect(actCreateNew, &QAction::triggered, this, &TextRedactor::createNewFile);
     connect(actOpen, &QAction::triggered, this, &TextRedactor::open);
     connect(actOpenReadOnly, &QAction::triggered, this, &TextRedactor::openReadOnly);
     connect(actSave, &QAction::triggered, this, &TextRedactor::save);
@@ -102,10 +106,11 @@ void TextRedactor::setLanguage(QString lang)
     QList<QAction*> actions = ui->menuFile->actions();
 
     ui->menuFile->setTitle(tr("File"));
-    actions.at(0)->setText(tr("&Open"));
-    actions.at(1)->setText(tr("&Open read only"));
-    actions.at(2)->setText(tr("&Save"));
-    actions.at(3)->setText(tr("&Save as"));
+    actions.at(0)->setText(tr("&New file"));
+    actions.at(1)->setText(tr("&Open"));
+    actions.at(2)->setText(tr("&Open read only"));
+    actions.at(3)->setText(tr("&Save"));
+    actions.at(4)->setText(tr("&Save as"));
 
     ui->menuInformation->setTitle(tr("Information"));
     ui->menuInformation->actions().at(0)->setText(tr("&Reference"));
@@ -126,6 +131,17 @@ void TextRedactor::setLanguage(QString lang)
     menus.append(ui->menuOptions);
 
     scChanger_ = new ShortcutChanger(nullptr, menus, &translator_);
+}
+
+void TextRedactor::createNewFile()
+{
+    if (!filename_.isEmpty())
+    {
+        save();
+    }
+
+    filename_ = "untitled.txt";
+    this->setWindowTitle(filename_);
 }
 
 void TextRedactor::open()
@@ -156,7 +172,7 @@ void TextRedactor::openReadOnly()
 
 void TextRedactor::save()
 {
-    if (!filename_.isEmpty())
+    if (!filename_.isEmpty() && "untitled.txt" != filename_)
     {
         QFile out(filename_);
 

@@ -24,6 +24,7 @@ private:
     void setLanguage(QString lang);
 
 private slots:
+    void createNewFile();
     void open();
     void openReadOnly();
 

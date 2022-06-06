@@ -19,17 +19,17 @@
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="shortcutchanger.cpp" line="17"/>
+        <location filename="shortcutchanger.cpp" line="20"/>
         <source>Change shortcuts</source>
         <translation>Сменить горячие клавиши</translation>
     </message>
     <message>
-        <location filename="shortcutchanger.cpp" line="20"/>
+        <location filename="shortcutchanger.cpp" line="24"/>
         <source>Action</source>
         <translation>Действие</translation>
     </message>
     <message>
-        <location filename="shortcutchanger.cpp" line="21"/>
+        <location filename="shortcutchanger.cpp" line="25"/>
         <source>Shortcut</source>
         <translation>Сочетание клавиш</translation>
     </message>
@@ -43,19 +43,19 @@
     </message>
     <message>
         <location filename="textredactor.ui" line="39"/>
-        <location filename="textredactor.cpp" line="98"/>
+        <location filename="textredactor.cpp" line="108"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
         <location filename="textredactor.ui" line="44"/>
-        <location filename="textredactor.cpp" line="105"/>
+        <location filename="textredactor.cpp" line="115"/>
         <source>Information</source>
         <translation>Информация</translation>
     </message>
     <message>
         <location filename="textredactor.ui" line="49"/>
-        <location filename="textredactor.cpp" line="110"/>
+        <location filename="textredactor.cpp" line="120"/>
         <source>Options</source>
         <translation>Опции</translation>
     </message>
@@ -80,62 +80,68 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="textredactor.cpp" line="25"/>
-        <location filename="textredactor.cpp" line="99"/>
+        <location filename="textredactor.cpp" line="22"/>
+        <location filename="textredactor.cpp" line="109"/>
+        <source>&amp;New file</source>
+        <translation>&amp;Новый файл</translation>
+    </message>
+    <message>
+        <location filename="textredactor.cpp" line="23"/>
+        <location filename="textredactor.cpp" line="110"/>
         <source>&amp;Open</source>
         <translation>&amp;Открыть</translation>
     </message>
     <message>
-        <location filename="textredactor.cpp" line="26"/>
-        <location filename="textredactor.cpp" line="100"/>
+        <location filename="textredactor.cpp" line="24"/>
+        <location filename="textredactor.cpp" line="111"/>
         <source>&amp;Open read only</source>
         <translation>&amp;Открыть только для чтения</translation>
     </message>
     <message>
-        <location filename="textredactor.cpp" line="27"/>
-        <location filename="textredactor.cpp" line="101"/>
+        <location filename="textredactor.cpp" line="25"/>
+        <location filename="textredactor.cpp" line="112"/>
         <source>&amp;Save</source>
         <translation>&amp;Сохранить</translation>
     </message>
     <message>
-        <location filename="textredactor.cpp" line="28"/>
-        <location filename="textredactor.cpp" line="102"/>
+        <location filename="textredactor.cpp" line="26"/>
+        <location filename="textredactor.cpp" line="113"/>
         <source>&amp;Save as</source>
         <translation>&amp;Сохранить как</translation>
     </message>
     <message>
-        <location filename="textredactor.cpp" line="29"/>
-        <location filename="textredactor.cpp" line="106"/>
+        <location filename="textredactor.cpp" line="27"/>
+        <location filename="textredactor.cpp" line="116"/>
         <source>&amp;Reference</source>
         <translation>&amp;Справка</translation>
     </message>
     <message>
-        <location filename="textredactor.cpp" line="30"/>
-        <location filename="textredactor.cpp" line="111"/>
+        <location filename="textredactor.cpp" line="28"/>
+        <location filename="textredactor.cpp" line="121"/>
         <source>&amp;Switch language</source>
         <oldsource>Switch language</oldsource>
         <translation>&amp;Сменить язык</translation>
     </message>
     <message>
-        <location filename="textredactor.cpp" line="31"/>
-        <location filename="textredactor.cpp" line="112"/>
+        <location filename="textredactor.cpp" line="29"/>
+        <location filename="textredactor.cpp" line="122"/>
         <source>&amp;Change shortcuts</source>
         <translation>&amp;Сменить горячие клавиши</translation>
     </message>
     <message>
-        <location filename="textredactor.cpp" line="32"/>
-        <location filename="textredactor.cpp" line="113"/>
+        <location filename="textredactor.cpp" line="30"/>
+        <location filename="textredactor.cpp" line="123"/>
         <source>&amp;Quit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="textredactor.cpp" line="118"/>
-        <location filename="textredactor.cpp" line="131"/>
+        <location filename="textredactor.cpp" line="149"/>
+        <location filename="textredactor.cpp" line="162"/>
         <source>Open file</source>
         <translation>Открыть файл</translation>
     </message>
     <message>
-        <location filename="textredactor.cpp" line="183"/>
+        <location filename="textredactor.cpp" line="222"/>
         <source>Reference</source>
         <translation>Справка</translation>
     </message>
