@@ -70,11 +70,6 @@
     <string>Ctrl+S</string>
    </property>
   </action>
-  <action name="actionasdas_2">
-   <property name="text">
-    <string>asdas</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>

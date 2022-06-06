@@ -26,7 +26,7 @@ TextRedactor::TextRedactor(QWidget *parent)
     QAction* actSaveAs = new QAction(QIcon(":/Resources/icons/save_as.png"), tr("&Save as"), this);
     QAction* actReference = new QAction(QIcon(":/Resources/icons/info.png"), tr("&Reference"), this);
     QAction* actSwitchLang = new QAction(QIcon(":/Resources/icons/switch_lang.png"), tr("&Switch language"), this);
-    QAction* actChangeShortcuts = new QAction(QIcon(":/Resources/icons/chng-shortcuts.png"), tr("&Change shortcuts"), this);
+    QAction* actChangeShortcuts = new QAction(QIcon(":/Resources/icons/chng_shortcuts.png"), tr("&Change shortcuts"), this);
     QAction* actQuit = new QAction(QIcon(":/Resources/icons/quit.png"), tr("&Quit"), this);
 
     actCreateNew->setShortcut(QKeySequence::New);
