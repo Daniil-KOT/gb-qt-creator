@@ -13,6 +13,5 @@
         <file>Resources/icons/save.png</file>
         <file>Resources/icons/save_as.png</file>
         <file>Resources/icons/switch_lang.png</file>
-        <file>Resources/styles/dark_theme.qss</file>
     </qresource>
 </RCC>
