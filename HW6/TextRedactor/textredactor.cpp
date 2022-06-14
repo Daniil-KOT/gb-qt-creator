@@ -108,6 +108,7 @@ TextRedactor::TextRedactor(QWidget *parent)
     connect(actCreateNew, &QAction::triggered, this, &TextRedactor::createNewFile);
     connect(actCreateSeparated, &QAction::triggered, this, &TextRedactor::createNewFileSeparated);
     connect(actOpen, &QAction::triggered, this, &TextRedactor::open);
+    connect(actOpenSeparated, &QAction::triggered, this, &TextRedactor::openSeparated);
     connect(actOpenReadOnly, &QAction::triggered, this, &TextRedactor::openReadOnly);
     connect(actSave, &QAction::triggered, this, &TextRedactor::save);
     connect(actSaveAs, &QAction::triggered, this, &TextRedactor::saveAs);
