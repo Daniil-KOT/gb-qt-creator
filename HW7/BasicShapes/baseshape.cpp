@@ -34,6 +34,8 @@ BaseShape::BaseShape(QObject *parent, int shapeType, QPolygon shape)
 
     brush_.setColor(QColor(rand() % 256, rand() % 256, rand() % 256));
     brush_.setStyle(Qt::BrushStyle::SolidPattern);
+
+    this->setTransformOriginPoint(shape_.boundingRect().center());
 }
 
 void BaseShape::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -70,37 +72,54 @@ bool BaseShape::containsPoint(const QPoint& point)
 
 void BaseShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if (Qt::MouseButton::LeftButton == event->button())
-    {
-        mouseLeftBtnPressed_ = true;
-        currentPos_ = event->pos().toPoint();
-    }
-    else if (Qt::MouseButton::RightButton == event->button())
-    {
-    }
-    else if (Qt::MouseButton::LeftButton == event->button())
+    if (Qt::LeftButton == event->button())
     {
         isMoving_ = true;
-        return;
+        currentPos_ = event->pos().toPoint();
+    }
+    if (Qt::MiddleButton == event->button())
+    {
+        isRotating_ = true;
     }
 }
 
 void BaseShape::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    mouseLeftBtnPressed_ = false;
-    isMoving_ = false;
+    if (Qt::LeftButton == event->button())
+    {
+        isMoving_ = false;
+    }
+    else if (Qt::MiddleButton == event->button())
+    {
+        isRotating_ = false;
+    }
 }
 
 void BaseShape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if (isMoving_)
     {
-        QPoint delta = event->pos().toPoint() - currentPos_;
+        const QPoint delta = event->pos().toPoint() - currentPos_;
+
         for (int i = 0; i < shape_.size(); ++i)
         {
             shape_[i].setX(shape_[i].x() + delta.x());
             shape_[i].setY(shape_[i].y() + delta.y());
         }
         currentPos_ = event->pos().toPoint();
+        this->setTransformOriginPoint(shape_.boundingRect().center());
     }
+
+    if (isRotating_)
+    {
+        const qreal angle = 10;
+
+        this->setRotation(this->rotation() + angle);
+
+        if (360 == this->rotation())
+        {
+            this->setRotation(0);
+        }
+    }
+    emit redraw();
 }

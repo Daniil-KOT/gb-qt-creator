@@ -23,6 +23,7 @@ private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
 
 signals:
+    void redraw();
 
 private:
     enum ShapeTypes
@@ -36,8 +37,8 @@ private:
     QPolygon shape_;
     QBrush brush_;
     QPoint currentPos_;
-    bool mouseLeftBtnPressed_ = false;
     bool isMoving_ = false;
+    bool isRotating_ = false;
 };
 
 #endif // SHAPE_H

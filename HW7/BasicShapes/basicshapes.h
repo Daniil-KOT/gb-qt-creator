@@ -19,21 +19,22 @@ public:
 protected:
     void mousePressEvent(QMouseEvent* event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
-//    void mouseMoveEvent(QMouseEvent* event) override;
-//    void paintEvent(QPaintEvent*) override;
+    void wheelEvent(QWheelEvent *event) override;
+    void keyPressEvent(QKeyEvent *event) override;
 
 private:
     QPolygon makeStar();
     void draw(QPainter& painter);
-    int findShape();
-    void deleteShape(int idx);
+    QGraphicsItem* findShape();
+    void deleteShape();
+
+private slots:
+    void redraw();
 
 private:
-    QPoint currentPos_;
-    bool mouseLeftBtnPressed_ = false;
-    bool isMoving_ = false;
+    QPointF currentPos_;
     QList<BaseShape*> shapes_;
-    BaseShape* currentShape_ = nullptr;
+    QGraphicsItem* currentShape_ = nullptr;
     QGraphicsScene* scene_ = nullptr;
 
     enum ShapeTypes
