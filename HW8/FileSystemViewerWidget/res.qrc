@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resource/filesviewer_ru.qm</file>
+        <file>Resource/filesviewer_ru.ts</file>
+    </qresource>
+</RCC>
