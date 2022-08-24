@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>tasks_data.txt</file>
+        <file>CustomButton.qml</file>
+    </qresource>
+</RCC>
