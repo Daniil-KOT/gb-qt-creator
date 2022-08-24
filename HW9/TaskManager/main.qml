@@ -1,9 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
-import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.5
 import com.vv.filectrl
-
+import "E:/code/GB/gb-qt-creator/HW9/TaskManager/CustomButton.qml"
 Window {
     id: root
     width: 640
@@ -48,7 +47,7 @@ Window {
         anchors.topMargin: 5
     }
 
-    Button
+    CustomButton
     {
         id: save
         text: "Save"
@@ -63,7 +62,7 @@ Window {
         anchors.topMargin: 5
     }
 
-    Button
+    CustomButton
     {
         id: load
         text: "Load task"
@@ -72,29 +71,13 @@ Window {
             filectrl.getNextTask();
         }
         anchors.top: qprogress.bottom
-        anchors.topMargin: 5
         anchors.left: save.right
-        anchors.rightMargin: 5
+        anchors.topMargin: 5
+        anchors.leftMargin: 5
     }
 
-    FileController{
+    FileController
+    {
         id: filectrl
-        onInitEnd:
-        {
-            if (success)
-                filectrl.getNextTask();
-            else
-                Qt.quit();
-        }
-
-        onLoadTask:
-        {
-            Qt.createQmlObject(taskName, qtaskname, "")
-            Qt.createQmlObject(deadline, qdeadline, "")
-            Qt.createQmlObject(progress, qprogress, "")
-            qtaskname.text = taskName;
-            qdeadline.text = deadline;
-            qprogress.value = progress;
-        }
     }
 }
